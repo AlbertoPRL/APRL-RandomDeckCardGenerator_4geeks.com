@@ -20,13 +20,16 @@ const pipArray = [
     '<i class="bi bi-suit-heart-fill pip-size" style="color: red"></i>'
 ];
 
-const generateCard = () => {   
+const generateCard = () => {
     const newCardValue = valueArray[randomIndex(valueArray)];
     const newCardPip = pipArray[randomIndex(pipArray)];
     value.innerHTML = newCardValue;
-    for (let pip of pips) {
+    for (let [index, pip] of pips.entries()) {
         pip.innerHTML = newCardPip;
         pip.classList.add("pip");
+        if (index === 1) {
+            pip.style.transform = "rotate(180deg)";
+        }
     }
 };
 
